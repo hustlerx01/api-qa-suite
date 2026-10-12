@@ -1,0 +1,19 @@
+services:
+  api-vulnerable:
+    build: .
+    environment: {APP_MODE: vulnerable, ALLOW_TEST_RESET: "1"}
+    ports: ["8001:8000"]
+  api-fixed:
+    build: .
+    environment: {APP_MODE: fixed, ALLOW_TEST_RESET: "1"}
+    ports: ["8002:8000"]
+  suite:
+    build: .
+    depends_on: [api-fixed]
+    environment: {BASE_URL: "http://api-fixed:8000"}
+    command: ["sh", "-c", "sleep 3 && pytest -q tests/functional tests/security && schemathesis run http://api-fixed:8000/openapi.json -H 'Authorization: Bearer tok-admin' --max-examples 50"]
+  zap:
+    image: ghcr.io/zaproxy/zaproxy:stable
+    profiles: [zap]
+    depends_on: [api-fixed]
+    command: ["zap-api-scan.py", "-t", "http://api-fixed:8000/openapi.json", "-f", "openapi", "-I"]
