@@ -1,0 +1,95 @@
+Schemathesis v4.30.1
+━━━━━━━━━━━━━━━━━━━━
+
+
+ ✅  Loaded specification from http://127.0.0.1:8765/openapi.json (in 0.17s)    
+
+     Base URL:         http://127.0.0.1:8765/                                   
+     Specification:    Open API 3.1.0                                           
+     Operations:       6 selected / 6 total                                     
+
+
+ ✅  API capabilities:                                                          
+
+     Supports NULL byte in headers:                            ✘                
+     Accepts backslash and control characters in URL paths:    ✓                
+
+ ⏭   Examples (in 0.00s)                                                        
+                                                                                
+     ⏭  6 skipped                                                               
+
+ ❌  Coverage (in 0.47s)                                                        
+                                                                                
+     ✅ 4 passed  ❌ 2 failed                                                   
+
+ ✅  Fuzzing (in 0.91s)                                                         
+                                                                                
+     ✅ 6 passed                                                                
+
+ ✅  Stateful (in 1.14s)                                                        
+
+     Scenarios:    56                                                           
+     API Links:    5 covered / 5 selected / 5 total (5 inferred)                
+
+     ✅ 56 passed                                                               
+
+=================================== FAILURES ===================================
+________________________________ OPTIONS /tasks ________________________________
+1. Test Case ID: 5zQR8X
+
+- Invalid Allow header
+
+    `Allow` header does not match the schema — missing documented methods: POST
+
+    List exactly the methods this resource supports in `Allow`
+
+[405] Method Not Allowed:
+
+    `{"detail":"Method Not Allowed"}`
+
+Reproduce with:
+
+    curl -X OPTIONS -H 'Authorization: [Filtered]' -H 'Content-Type: application/json' -d '{"done": false, "priority": "medium", "title": "0"}' http://127.0.0.1:8765/tasks
+    
+    st replay 5zQR8X
+
+___________________________ OPTIONS /tasks/{task_id} ___________________________
+1. Test Case ID: davZ4C
+
+- Invalid Allow header
+
+    `Allow` header does not match the schema — missing documented methods: DELETE
+
+    List exactly the methods this resource supports in `Allow`
+
+[405] Method Not Allowed:
+
+    `{"detail":"Method Not Allowed"}`
+
+Reproduce with:
+
+    curl -X OPTIONS -H 'Authorization: [Filtered]' http://127.0.0.1:8765/tasks/1
+    
+    st replay davZ4C
+
+=================================== SUMMARY ====================================
+
+API Operations:
+  Selected: 6/6
+  Tested: 6
+
+Test Phases:
+  ⏭  Examples
+  ❌ Coverage
+  ✅ Fuzzing
+  ✅ Stateful
+
+Failures:
+  ❌ Invalid Allow header: 2
+
+Test cases:
+  446 generated, 2 found 2 unique failures, 1 errored
+
+Seed: 1
+
+============================= 2 failures in 2.57s ==============================

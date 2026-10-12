@@ -1,0 +1,10 @@
+FAILED tests/contract/test_schemathesis.py::test_api_conforms_to_schema[GET /tasks]
+FAILED tests/contract/test_schemathesis.py::test_api_conforms_to_schema[POST /tasks]
+FAILED tests/contract/test_schemathesis.py::test_api_conforms_to_schema[GET /tasks/{task_id}]
+FAILED tests/security/test_owasp_api.py::test_API1_BOLA_cannot_read_other_users_object
+FAILED tests/security/test_owasp_api.py::test_API2_forged_token_rejected - As...
+FAILED tests/security/test_owasp_api.py::test_API3_no_sensitive_fields_exposed
+FAILED tests/security/test_owasp_api.py::test_API3_mass_assignment_owner_id
+FAILED tests/security/test_owasp_api.py::test_API4_rate_limiting - AssertionE...
+FAILED tests/security/test_owasp_api.py::test_API8_security_headers - Asserti...
+9 failed, 19 passed, 1 warning in 1.48s

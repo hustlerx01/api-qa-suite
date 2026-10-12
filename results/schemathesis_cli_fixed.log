@@ -1,0 +1,67 @@
+Schemathesis v4.30.1
+━━━━━━━━━━━━━━━━━━━━
+
+
+ ✅  Loaded specification from http://127.0.0.1:8765/openapi.json (in 0.17s)    
+
+     Base URL:         http://127.0.0.1:8765/                                   
+     Specification:    Open API 3.1.0                                           
+     Operations:       6 selected / 6 total                                     
+
+
+ ✅  API capabilities:                                                          
+
+     Supports NULL byte in headers:                            ✘                
+     Accepts backslash and control characters in URL paths:    ✓                
+
+ ⏭   Examples (in 0.01s)                                                        
+                                                                                
+     ⏭  6 skipped                                                               
+
+ ✅  Coverage (in 0.56s)                                                        
+                                                                                
+     ✅ 6 passed                                                                
+
+ ✅  Fuzzing (in 0.97s)                                                         
+                                                                                
+     ✅ 6 passed                                                                
+
+ ✅  Stateful (in 0.74s)                                                        
+
+     Scenarios:    55                                                           
+     API Links:    0 covered / 5 selected / 5 total (5 inferred)                
+
+     ✅ 55 passed                                                               
+
+=================================== WARNINGS ===================================
+
+Rate limited: 4 operations mostly returned 429 Too Many Requests, leaving the logic behind them untested
+
+  - DELETE /tasks/{task_id}
+  - GET /tasks
+  - GET /tasks/{task_id}
+  - POST /tasks
+
+💡 Send requests no faster than the API allows with --rate-limit, e.g. --rate-limit=100/m
+
+=================================== SUMMARY ====================================
+
+API Operations:
+  Selected: 6/6
+  Tested: 6
+
+Test Phases:
+  ⏭  Examples
+  ✅ Coverage
+  ✅ Fuzzing
+  ✅ Stateful
+
+Warnings:
+  ⚠️ Rate limited: 4 operations mostly returned 429 responses
+
+Test cases:
+  534 generated, 534 passed
+
+Seed: 1
+
+============================== 1 warning in 2.31s ==============================
