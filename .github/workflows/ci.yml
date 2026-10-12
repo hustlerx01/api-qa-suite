@@ -28,4 +28,5 @@ jobs:
       - run: docker build -t tasks-api .
       - run: docker run -d -p 8000:8000 -e ALLOW_TEST_RESET=1 tasks-api && sleep 3
       - run: pip install -r requirements.txt && BASE_URL=http://127.0.0.1:8000 pytest -q tests/functional tests/security
-      - run: schemathesis run http://127.0.0.1:8000/openapi.json -H "Authorization: Bearer tok-admin" --max-examples 50
+      - run: |
+          schemathesis run http://127.0.0.1:8000/openapi.json -H "Authorization: Bearer tok-admin" --max-examples 50
