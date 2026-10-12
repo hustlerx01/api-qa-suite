@@ -1,5 +1,7 @@
 # api-qa-suite: pytest + schemathesis + OWASP API Top 10 checks
 
+[![CI](https://github.com/hustlerx01/api-qa-suite/actions/workflows/ci.yml/badge.svg)](https://github.com/hustlerx01/api-qa-suite/actions/workflows/ci.yml)
+
 > **Lab project.** `api/app.py` is a small Tasks API I wrote as the system under test. `APP_MODE=vulnerable` ships **6 seeded defects** that mirror real OWASP API Top 10 findings. `APP_MODE=fixed` corrects them. A QA suite only has value if it **fails on the bad build and passes on the good one**, and CI asserts both.
 
 ## Problem
